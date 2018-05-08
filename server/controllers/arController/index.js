@@ -1,7 +1,7 @@
-exports.homePage = (req, res) => {
-	res.render('homePage', { message: 'Homepage for AR' });
+exports.tourView = (req, res) => {
+	res.render('arViews/tourView', { message: 'tourView for AR' });
 };
 
 exports.d3Tests = (req, res) => {
-	res.render('d3', { message: 'd3 test page' });
+	res.render('arViews/d3', { message: 'd3 test page' });
 };
