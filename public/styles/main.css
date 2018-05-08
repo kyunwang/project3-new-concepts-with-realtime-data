@@ -1,3 +1,92 @@
+:root {
+  /* Fonts */
+  --font-family: 'Open Sans', helvetica, sans-serif;
+
+    /* Base font */
+    --base-font-size: 1em;
+    --base-font-weight: 300;
+    --base-line-height: 1.4;
+
+    /* Title font */
+    --title-font-size: 5em;
+    --title-font-weight: 700;
+    --title-line-height: 1;
+
+    /* Heading font */
+    --heading-font-size: 1.5em;
+    --heading-font-weight: 600;
+    --heading-line-height: 1;
+
+  /* Colors */
+  --color-primary: #fef119;
+  --color-black: #141414;
+  --color-white: #ffffff;
+  --color-grey: #cfd3d4;
+
+  /* Spacing */
+  --spacing-unit: 1.5rem;
+}
+
+/*
+====================
+  General
+====================
+*/
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+body {
+  color: var(--color-black);
+  background-color: var(--color-grey);
+  font-family: var(--font-family);
+  font-size: var(--base-font-size);
+  font-weight: var(--base-font-weight);
+  line-height: var(--base-line-height);
+}
+
 h1 {
-    color: red;
+  color: var(--color-black);
+  font-size: var(--title-font-size);
+  font-weight: var(--title-font-weight);
+  line-height: var(--title-line-height);
+}
+
+h2 {
+  color: var(--color-black);
+  font-size: var(--heading-font-size);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+}
+
+p {
+  max-width: 30em;
+}
+
+button,
+a[role="button"] {
+  display: block;
+  height: 3.125rem;
+  padding: calc((3.125rem - var(--heading-font-size)) / 2);
+  color: var(--color-black);
+  font-size: var(--heading-font-size);
+  font-weight: var(--heading-font-weight);
+  text-decoration: none;
+  line-height: var(--heading-line-height);
+  background-color: var(--color-primary);
+}
+button::after,
+a[role="button"]::after {
+  position: absolute;
+  right: -1rem;
+  bottom: -1rem;
+  display: block;
+  background-color: var(--color-white);
+  content: '';
 }
