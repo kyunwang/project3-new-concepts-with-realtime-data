@@ -52,11 +52,39 @@ body {
   line-height: var(--base-line-height);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
+  align-self: center;
+  position: relative;
+  display: block;
+  margin: 5rem auto;
   color: var(--color-black);
   font-size: var(--title-font-size);
   font-weight: var(--title-font-weight);
   line-height: var(--title-line-height);
+}
+h1::before,
+h1::after {
+  position: absolute;
+  z-index: -1;
+  height: 1.5rem;
+  content: '';
+}
+h1::before {
+  left: -50vw;
+  bottom: -.25rem;
+  width: calc(50vw + 60%);
+  background-color: var(--color-white);
+}
+h1::after {
+  left: -15vw;
+  bottom: -1.75rem;
+  width: calc(15vw + 80%);
+  background-color: var(--color-primary);
 }
 
 h2 {
