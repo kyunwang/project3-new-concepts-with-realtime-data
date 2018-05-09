@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const routes = require('./routes');
+const apiRoutes = require('./routes/data-api.js')
+const arRoutes = require('./routes/arRoutes');
 
 require('dotenv').config({ path: './vars.env' });
 
@@ -28,6 +30,8 @@ app.use((req, res, next) => {
 
 // Declare the routes here
 app.use('/', routes);
+app.use('/ar-tour', arRoutes);
+app.use('/api', apiRoutes);
 
 // Listen to defined port
 app.listen(process.env.PORT, function() {

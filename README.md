@@ -34,11 +34,11 @@ First you need to create a `vars.env` file with `PORT=3100` (Or any port you lik
 
 # Tools
 The tools/packages used for this project:
-- Express(Node.js)
-- EJS Templating
-- D3.js
-- A-Frame
-- AR.js
+- [Express(Node.js)](https://expressjs.com/)
+- [EJS Templating](http://ejs.co/)
+- [D3.js](https://d3js.org/)
+- [A-Frame](https://aframe.io/)
+- [AR.js](https://github.com/jeromeetienne/AR.js)
 
 # License
 MIT
