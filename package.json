@@ -11,6 +11,7 @@
   "author": "Kang Yun Wang(Kevin Wang)",
   "license": "MIT",
   "dependencies": {
+    "@stomp/stompjs": "^4.0.2",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "ejs": "^2.6.1",
