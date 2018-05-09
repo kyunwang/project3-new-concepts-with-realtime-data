@@ -1,5 +1,5 @@
 exports.tourView = (req, res) => {
-	res.render('arViews/tourView', { message: 'Homepage for AR' });
+	res.render('arViews/tourView', { enableAr: true, enableD3: true });
 };
 
 exports.d3Tests = (req, res) => {

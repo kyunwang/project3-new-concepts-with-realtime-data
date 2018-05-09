@@ -1,22 +1,22 @@
-
 <%- include('../partials/header.ejs') %>
-	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
-	<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
 
-	<h1>Tour</h1>
-	<p><%= message %></p>
-	
-	<a-scene embedded arjs='sourceType: webcam;'>
+	<a-scene embedded arjs='debugUIEnabled: true;'>
 		<!-- Defined marker content -->
-		<a-marker preset='hiro'>
+		<a-marker id="a-greenhouse" preset='hiro'>
 			<!-- here define the content to display on top of the marker -->
-			<a-box position='.25 .25 -.25' material='color: red;'></a-box>
+
+			<!-- <a-box position='.25 .25 -.25' material='color: red;'></a-box> -->
 		</a-marker>
 
 		<!--  -->
-		<a-marker preset='kanji'>
+		<a-marker id="a-cafe" preset='kanji'>
 			<a-box position='.25 .25 -.25' material='color: blue;'></a-box>
 		</a-marker>
+
+		<a-marker preset='custom' type='pattern' url='/ar/arqua.patt'>
+			<a-sphere position='0 0.5 0' material='color: yellow;'></a-sphere>
+		</a-marker>
+
 
 		<%#
 		<a-marker type='pattern' url='/ar/greenhouse-pattern.patt'>
@@ -30,5 +30,6 @@
 
 
 
+	<script src="/scripts/arGraphs.js"></script>
 
 <%- include('../partials/footer.ejs') %>
