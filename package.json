@@ -11,11 +11,15 @@
   "author": "Kang Yun Wang(Kevin Wang)",
   "license": "MIT",
   "dependencies": {
-    "@stomp/stompjs": "^4.0.2",
+    "@stomp/stompjs": "^4.0.3",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "ejs": "^2.6.1",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "sockjs": "^0.3.19",
+    "sockjs-client-node": "^1.0.0",
+    "stompjs": "^2.3.3",
+    "websocket": "^1.0.26"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",

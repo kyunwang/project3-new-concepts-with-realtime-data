@@ -7,5 +7,5 @@ exports.d3Tests = (req, res) => {
 };
 
 exports.apiTest = (req, res) => {
-	res.render('arViews/api', { message: 'Api test page' });
+	res.render('arViews/api', { message: 'Api test page', data: stomp.data});
 };
