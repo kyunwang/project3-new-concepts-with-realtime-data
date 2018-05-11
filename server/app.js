@@ -5,8 +5,10 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const helpers = require('../public/scripts/helpers');
+
 const routes = require('./routes');
-const apiRoutes = require('./routes/data-api.js');
+const apiRoutes = require('./routes/data-api');
 const arRoutes = require('./routes/arRoutes');
 
 require('dotenv').config({ path: './vars.env' });
@@ -24,7 +26,7 @@ app.use(bodyParser.json()).use(bodyParser.urlencoded({ extended: false }));
 
 // Add global middleware available in templates and all routes
 app.use((req, res, next) => {
-	res.locals.h = 'Add helpers file here';
+	res.locals.h = helpers;
 	res.locals.enableAr = false;
 	res.locals.enableD3 = false;
 	next();
