@@ -8,12 +8,12 @@
     --base-line-height: 1.4;
 
     /* Title font */
-    --title-font-size: 5em;
+    --title-font-size: 2.5em;
     --title-font-weight: 700;
     --title-line-height: 1;
 
     /* Heading font */
-    --heading-font-size: 1.5em;
+    --heading-font-size: 1.25em;
     --heading-font-weight: 600;
     --heading-line-height: 1.4;
 
@@ -25,6 +25,15 @@
 
   /* Spacing */
   --spacing-unit: 1.5rem;
+}
+@media all and (min-width: 35rem) {
+  :root {
+    /* Title font */
+    --title-font-size: 5em;
+
+    /* Heading font */
+    --heading-font-size: 1.5em;
+  }
 }
 
 /*
@@ -52,16 +61,10 @@ body {
   line-height: var(--base-line-height);
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-}
-
 h1 {
   align-self: center;
   position: relative;
   display: block;
-  margin: 5rem auto;
   color: var(--color-black);
   font-size: var(--title-font-size);
   font-weight: var(--title-font-weight);
@@ -71,8 +74,14 @@ h1::before,
 h1::after {
   position: absolute;
   z-index: -1;
-  height: 1.5rem;
+  height: 1rem;
   content: '';
+}
+@media all and (min-width: 35rem) {
+  h1::before,
+  h1::after {
+    height: 1.5rem;
+  }
 }
 h1::before {
   left: -50vw;
@@ -82,12 +91,18 @@ h1::before {
 }
 h1::after {
   left: -15vw;
-  bottom: -1.75rem;
+  bottom: -1.25rem;
   width: calc(15vw + 80%);
   background-color: var(--color-primary);
 }
+@media all and (min-width: 35rem) {
+  h1::after {
+    bottom: -1.75rem;
+  }
+}
 
 h2 {
+  display: block;
   color: var(--color-black);
   font-size: var(--heading-font-size);
   font-weight: var(--heading-font-weight);
@@ -107,7 +122,8 @@ a[role='button'] {
   width: auto;
   height: 3.75rem;
   padding: calc((3.75rem - var(--heading-font-size)) / 2) var(--spacing-unit);
-  border-radius: 5px;
+  margin: 0 auto;
+  border-radius: .3125rem;
   outline: 0;
   color: var(--color-black);
   font-size: var(--heading-font-size);
@@ -128,7 +144,7 @@ a[role='button']::after {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
+  border-radius: .3125rem;
   background-color: var(--color-white);
   content: '';
   transition: all .3s ease-in-out;
@@ -146,4 +162,65 @@ a[role='button']:hover::after,
 a[role='button']:focus::after,
 a[role='button']:active::after {
   bottom: 0;
+}
+@media all and (prefers-reduced-motion: reduce) {
+  button,
+  button::after,
+  a[role='button'],
+  a[role='button']::after {
+    transition: none;
+  }
+}
+
+/*
+====================
+  Main
+====================
+*/
+
+main {
+  display: block;
+  width: 100%;
+  max-width: 75rem;
+  padding: var(--spacing-unit);
+  margin: 0 auto;
+}
+
+/*
+====================
+  Intro
+====================
+*/
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.intro h1 {
+  margin: 3rem auto;
+}
+
+.intro h2 {
+  max-width: 30rem;
+  margin: 5rem auto;
+  text-align: center;
+}
+
+.intro p {
+  margin: 5rem auto;
+  text-align: center;
+}
+
+.intro p > a {
+  display: block;
+  margin: .5rem;
+  color: var(--color-black);
+  font-size: var(--heading-font-size);
+  font-weight: var(--heading-font-weight);
+}
+.intro p > a:hover,
+.intro p > a:active {
+  text-decoration: none;
 }
