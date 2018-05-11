@@ -89,7 +89,7 @@ h1::before {
   width: calc(50vw + 60%);
   background-color: var(--color-white);
 }
-h1::after {
+h1::after, h1::after {
   left: -15vw;
   bottom: -1.25rem;
   width: calc(15vw + 80%);
@@ -163,64 +163,54 @@ a[role='button']:focus::after,
 a[role='button']:active::after {
   bottom: 0;
 }
-@media all and (prefers-reduced-motion: reduce) {
-  button,
-  button::after,
-  a[role='button'],
-  a[role='button']::after {
-    transition: none;
-  }
+
+
+.zerostate{
+margin: 0 auto;
+
 }
 
-/*
-====================
-  Main
-====================
-*/
-
-main {
-  display: block;
-  width: 100%;
-  max-width: 75rem;
-  padding: var(--spacing-unit);
+.zerostate p {
   margin: 0 auto;
-}
-
-/*
-====================
-  Intro
-====================
-*/
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-.intro h1 {
-  margin: 3rem auto;
-}
-
-.intro h2 {
-  max-width: 30rem;
-  margin: 5rem auto;
   text-align: center;
 }
 
-.intro p {
-  margin: 5rem auto;
+h2{
   text-align: center;
-}
+  margin-bottom: 2em;
+  font-size: 2em;
+  width: 26ch;
 
-.intro p > a {
-  display: block;
-  margin: .5rem;
+  position: relative;
   color: var(--color-black);
-  font-size: var(--heading-font-size);
-  font-weight: var(--heading-font-weight);
+  font-weight: var(--title-font-weight);
+  line-height: var(--title-line-height);
 }
-.intro p > a:hover,
-.intro p > a:active {
-  text-decoration: none;
+
+h2::before,
+h2::after {
+  position: absolute;
+  z-index: -1;
+  height: 1.5rem;
+  content: '';
+}
+
+h2::before {
+  left: -50vw;
+  bottom: -.25rem;
+  width: calc(50vw + 60%);
+  background-color: var(--color-white);
+}
+
+h2::after {
+  left: -15vw;
+  bottom: -1.75rem;
+  width: calc(15vw + 80%);
+  background-color: var(--color-primary);
+}
+
+.zerostate article {
+  padding: 3em;
+  width: fit-content;
+  margin: 2em auto 0 auto;
 }
