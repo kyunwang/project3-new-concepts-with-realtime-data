@@ -1,159 +1,101 @@
-// fake data
-var fakeData = [10, 20, 30, 45, 50, 70, 100, 120, 130, 12, 29, 59, 200];
+// Data container (max length of 20)
+var graphData = [];
 
-var random = d3.randomNormal(0, 200);
+// We scale the height of our bars using d3's linear scale
+var vScale = d3.scaleLinear().range([0, 3]);
 
-// we scale the height of our bars using d3's linear scale
-var hscale = d3.scaleLinear().range([0, 5]);
+// Getting the containers to assign the curve points to
+var ghConsumption = d3.select('#a-greenhouse-consumption-line');
+var ghSolar = d3.select('#a-greenhouse-solar-line');
 
-var greenhouseLine = d3.select('#a-greenhouse-line');
-
-function render(data) {
-	// we select the scene object just like an svg
-	var scene = d3.select('#a-greenhouse');
-
-	// we use d3's enter/update/exit pattern to draw and bind our dom elements
-	// var bars = scene.selectAll('a-cube.bar').data(data);
-	scene
-		.selectAll('a-box')
-		.data(data)
-		.enter()
-		.append('a-box')
-		.attr('color', 'red')
-		.attr('opacity', 0.7)
-		.attr('width', 0.2)
-		.attr('height', function(d, i) {
-			return hscale(d);
-		})
-		.attr('position', function(d, i) {
-			var position = {
-				x: 0.15 * (i * 2),
-				// x: 0,
-				// y: 0.25 * (i * 2),
-				y: 0,
-				// z: -0.25 * (i * 2),
-				z: 0 - hscale(d) / 2,
-			};
-			return position;
-		})
-		.attr('rotation', function(d, i) {
-			return {
-				x: 90,
-				y: 0,
-				z: 0,
-			};
-		})
-		.attr('depth', 0.2);
-}
+// Getting the label value containers
+var labelConsumption = d3.select('#a-consumption-value');
+var labelSolar = d3.select('#a-solar-value');
 
 function renderLine(data) {
+	if (data.length === 0) return;
+
 	// Assign and update the scale at each (re)render
-	// hscale.domain([0, d3.max(data)]);
-	hscale.domain([0, 1000]);
+	vScale.domain([getMinimum(data), getMaximum(data)]);
 
-	// we select the scene object just like an svg
-	var curveTrack = greenhouseLine.selectAll('a-curve-point').data(data);
+	// We select the scene object just like an svg
+	var ghConLine = ghConsumption.selectAll('a-curve-point').data(data);
+	var ghSolLine = ghSolar.selectAll('a-curve-point').data(data);
 
-	// we use d3's enter/update/exit pattern to draw and bind our dom elements
-	curveTrack
-		.enter()
-		.append('a-curve-point')
-		.merge(curveTrack)
-		.attr('position', function(d, i) {
-			var position = {
-				x: 0.15 * (i * 2),
-				y: 0,
-				z: 0 - hscale(d) / 2,
-			};
-			return position;
-		})
-		.attr('geometry', function(d) {
-			var attr = {
-				primitive: 'box',
-				height: 0.1,
-				width: 0.1,
-				depth: 0.1,
-			};
+	var lastItem = data[data.length - 1];
 
-			return attr;
-		});
-	// .transition()
-	// .duration(1500)
-	// // .ease(d3.easeLinear)
-	// .on('start', tick);
+	// Calling the function to set the curve points
+	// Which will create the path for the line
+	setLine(ghConLine, 'consumption');
+	setLine(ghSolLine, 'solar');
 
-	// EXIT
-	// Remove old elements as needed.
-	curveTrack.exit().remove();
-
-	// paintLine();
+	setLabel(labelConsumption, lastItem, 'consumption');
+	setLabel(labelSolar, lastItem, 'solar');
 }
 
-function paintLine() {
-	// greenhouseLine.insert('a-text');
-	var ghl = document.getElementById('a-greenhouse-line');
-	console.log('painting', ghl);
+function setLine(lineGraph, type) {
+	// We use d3's enter/update/exit pattern to draw and bind our dom elements
+	lineGraph
+		.enter()
+		.append('a-curve-point')
+		.merge(lineGraph)
+		.attr('position', function(d, i) {
+			var position = {
+				x: 0.1 * (i * 2),
+				y: 0,
+				z: 0 - vScale(normalizeNum(d[type])) / 2,
+			};
+			return position;
+		});
+	// For testing the points. Renders a box at each curve point
+	// .attr('geometry', function(d) {
+	// 	var attr = {
+	// 		primitive: 'box',
+	// 		height: 0.1,
+	// 		width: 0.1,
+	// 		depth: 0.1,
+	// 	};
 
-	var element = document.getElementById('a-greenhouse-curve');
-	element.outerHTML = '';
-	delete element;
+	// Remove old elements as needed.
+	lineGraph.exit().remove();
+}
 
-	// ghl.insertAdjacentHTML(
-	// 	'afterend',
-	// 	'<a-draw-curve id="a-greenhouse-curve" curveref="#a-greenhouse-line" material="shader: line; color: blue;"></a-draw-curve>'
-	// );
-	ghl.insertAdjacentHTML(
-		'afterend',
-		'<a-entity clone-along-curve="curve: #a-greenhouse-line; spacing: 0.05; scale: 1 1 1; rotation: 0 0 0;" geometry="primitive:box; height:0.1; width:0.2; depth:0.1"></a-entity>'
-	);
+// Setting the values of the labels
+function setLabel(label, data, type) {
+	label.attr('value', normalizeNum(data[type]));
 }
 
 // Initial render
-// render(fakeData);
-renderLine(fakeData);
+renderLine(graphData);
 
-setInterval(async function() {
-	console.log('Call');
-	await tick();
-	renderLine(fakeData);
-}, 1500);
+// Getting the min/max numbers of an array
+function getMinimum(data) {
+	var min = d3.min(data, function(d) {
+		return smallerNum(d.consumption, normalizeNum(d.solar));
+	});
 
-// Grab a random sample of letters from the alphabet, in alphabetical order.
-// d3.interval(async function() {
-// 	await tick();
-// 	// await renderLine(fakeData);
-// }, 1500);
+	return min - 5;
+}
 
-function tick() {
-	// Push a new data point onto the back.
-	fakeData.push(random());
+function getMaximum(data) {
+	var max = d3.max(data, function(d) {
+		return biggerNum(d.consumption, normalizeNum(d.solar));
+	});
+	return max + 5;
+}
 
-	// d3.select(this).transition().duration(1000)
-	//    .attr({
-	//      metalness: 0.5,
-	//      width: 2
-	//    })
+// Make all the numbers positive and with a decimal of 2
+function normalizeNum(num) {
+	return Math.abs(num).toFixed(2);
+}
 
-	// Redraw the line.
+// Return the smaller/larger number
+function smallerNum(num1, num2) {
+	if (num1 > num2) return num2;
+	return num1;
+}
 
-	// Slide it to the left.
-	// d3
-	// 	.active(this)
-	// 	.attr('position', function(d, i) {
-	// 		console.log(d);
-
-	// 		var position = {
-	// 			x: 0.15 * (i * 2),
-	// 			y: 0,
-	// 			z: 0 - hscale(d) / 2,
-	// 		};
-	// 		return position;
-	// 	})
-	// 	.transition()
-	// 	.on('start', tick);
-
-	// Pop the old data point off the front.
-
-	fakeData.shift();
-	// renderLine(fakeData);
+function biggerNum(num1, num2) {
+	if (num1 > num2) return num1;
+	return num2;
 }

@@ -3,29 +3,147 @@
 	<a-scene
 		embedded
 		arjs='debugUIEnabled: true;'
-		inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js" 
-	>
+		>
+		<!-- inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js" -->
 
-		<a-text value="TEST" rotation="270 0 0" position="0 0 0"></a-text>
-				
-		<a-curve id="a-greenhouse-line" type="Line">
+		<!-- Container for consumption line/curve point -->
+		<a-curve id="a-greenhouse-consumption-line" type="Line">
 			<%# Example point: <a-curve-point position="-2 1 -3"></a-curve-point> %>
 		</a-curve>
+		
+		<!-- Container for solar line/curve point -->
+		<a-curve id="a-greenhouse-solar-line" type="Line"></a-curve>
 
 		<%#
 		Draws a line
 		<a-draw-curve id="a-greenhouse-curve" curveref="#a-greenhouse-line" material="shader: line; color: blue;"></a-draw-curve>
 		%>
-		
-		<a-entity id="a-greenhouse-curve" clone-along-curve="curve: #a-greenhouse-line; spacing: 0.05; scale: .5 .5 .5; rotation: 0 0 0;" 
-		position="0" geometry="primitive:box; height:0.1; width:0.2; depth:0.1" rotation="0 0 0"></a-entity>
-		<a-marker-camera preset='hiro'></a-marker-camera>
 
+
+		<!-- Container for the linegraph -->
+		<a-entity
+			id="a-graph-con"
+			rotation="0 0 0"
+			position="-1.5 .5 .4"
+		>
+			<a-entity
+				id="a-greenhouse-consumption"
+				clone-along-curve="curve: #a-greenhouse-consumption-line; spacing: 0.05; scale: .3 .3 .3; rotation: 0 0 0;" 
+				material="color: #B21900;"
+				geometry="primitive:box; height:0.1; width:0.2; depth:0.1;"
+				scale="0.7"
+			></a-entity>
+
+			<a-entity
+				id="a-greenhouse-solar"
+				clone-along-curve="curve: #a-greenhouse-solar-line; spacing: 0.05; scale: .3 .3 .3; rotation: 0 0 0;" 
+				material="color: #00D91F"
+				geometry="primitive:box; height:0.1; width:0.2; depth:0.1;"
+				scale="0.7"
+			></a-entity>
+
+			<!-- Container for the labels -->
+			<a-entity
+				id="a-label-con"
+				position="1.3 0 .3"
+			>
+
+				<!-- Consumption/Use label -->
+				<a-entity
+					id="a-label-consumption"
+					position=".45 0 0"
+					rotation="270 0 0"
+				>
+					<a-entity
+						geometry="
+							primitive: box;
+							width: .1;
+							height: .1;
+							depth: .1;"
+						material="color: #B21900;"
+					></a-entity>
+
+					<a-text
+						value="Use:"
+						position=".1 0 0"
+					></a-text>
+					<a-text
+						id="a-consumption-value"
+						value="0"
+						position=".65 0 0"
+					></a-text>
+				</a-entity>
+
+				<!-- Solar label -->
+				<a-entity
+					id="a-label-solar"
+					position="-1.3 0 0"
+					rotation="270 0 0"
+				>
+					<a-entity
+						geometry="
+							primitive: box;
+							width: .1;
+							height: .1;
+							depth: .1;"
+						material="color: #00D91F;"
+					></a-entity>
+
+					<a-text
+						value="Solar:"
+						position=".1 0 0"
+					></a-text>
+					<a-text
+						id="a-solar-value"
+						value="0"
+						position=".75 0 0"
+					></a-text>
+				</a-entity>
+			</a-entity>
+		</a-entity>
+
+		<!-- Container for showing extra info -->
+		<a-entity
+			position="0 -.2 -2"
+			rotation="270 0 0"
+		>
+			<a-plane
+				color="#000"
+				width="4"
+				height="1"
+				material="opacity: 1;"
+			></a-plane>
+
+			<a-entity
+				position="-1.6 .1 .6"
+				scale="1"
+			>
+				<a-text value="Header"></a-text>
+				<a-entity
+					position="0 -.25 0"
+					scale=".7 .7 .7"
+				>
+					<a-text value="Content Content Content Content Content"></a-text>
+				</a-entity>
+			</a-entity>
+		</a-entity>
+
+		<!-- The background of the graph -->
+		<a-plane
+			color="#000"
+			height="3"
+			width="4"
+			rotation="270 0 0"
+			position="0 -.2 0"
+			material="opacity: 0.8;"
+		></a-plane>
+
+		<a-marker-camera preset='hiro'></a-marker-camera>
 	</a-scene>
 
 
 
-
+	<script src="/scripts/clientSock.js"></script>
 	<script src="/scripts/arGraphs.js"></script>
 
 <%- include('../partials/footer.ejs') %>
