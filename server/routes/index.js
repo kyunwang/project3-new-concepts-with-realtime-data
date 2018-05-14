@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', wController.homePage);
 
-router.get('/zeroState', wController.zeroState);
+router.get('/zerostate', wController.zeroState);
 
 router.get('/home', wController.infoPage);
 
