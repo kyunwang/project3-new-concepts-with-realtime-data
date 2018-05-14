@@ -12,22 +12,22 @@
 	</header>
 
 	<nav class="badges">
-		<a class="badge" role="button" href="#">
+		<a class="badge" role="button" href="#cafe-de-ceuvel">
 			<img src="/assets/images/badges/cafe-de-ceuvel-badge.svg" alt="">
 			<span>Cafe de Ceuvel</span>
 		</a>
-		<a class="badge" role="button" href="#">
+		<a class="badge" role="button" href="#greenhouse">
 			<img src="/assets/images/badges/greenhouse-badge.svg" alt="">
 			<span>Greenhouse</span>
 		</a>
-		<a class="badge" role="button" href="#">
+		<a class="badge" role="button" href="#mlab">
 			<img src="/assets/images/badges/mlab-badge.svg" alt="">
 			<span>MLab</span>
 		</a>
 	</nav>
 
 	<main class="white-bg">
-		<section class="site-section">
+		<section id="cafe-de-ceuvel" class="site-section">
 			<h1>De Ceuvel</h1>
 			<div class="content">
 				<article class="page-article">
@@ -42,16 +42,12 @@
 						De Ceuvel is niet alleen een ‘verboden tuin’ die na 10 jaar schoner wordt achtergelaten, maar ook een speeltuin voor duurzame technieken: door duurzame technologie te integreren voorzien we zoveel mogelijk in onze eigen elektra en verwerken we ons eigen afval op innovatieve, nieuwe manieren.
 					</p>
 				</article>
-				<div class="d3-graph">
-					<!-- Graph here -->
-				</div>
-				<div class="d3-graph">
-					<!-- Graph here -->
-				</div>
+				<!-- <div class="d3-graph">
+				</div> -->
 			</div>
 		</section>
 
-		<section class="site-section">
+		<section id="greenhouse" class="site-section">
 			<h1>Greenhouse</h1>
 			<div class="content">
 				<article class="page-article">
@@ -73,12 +69,12 @@
 					</p>
 				</article>
 				<div class="d3-graph">
-					<!-- Graph here -->
+					<%- include('d3-barchart.ejs') %>
 				</div>
 			</div>
 		</section>
 
-		<section class="site-section">
+		<section id="mlab" class="site-section">
 			<h1>Cafe de Ceuvel</h1>
 			<div class="content">
 				<article class="page-article">
@@ -92,9 +88,8 @@
 						Het eten dat bij het café geserveerd wordt, komt vooral uit het duurzame ecosysteem naast de deur.
 					</p>
 				</article>
-				<div class="d3-graph">
-					<!-- Graph here -->
-				</div>
+				<!-- <div class="d3-graph">
+				</div> -->
 			</div>
 		</section>
 	</main>

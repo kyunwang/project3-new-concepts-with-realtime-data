@@ -52,6 +52,10 @@
   line-height: inherit;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--color-black);
   background-color: var(--color-grey);
@@ -66,7 +70,7 @@ h1 {
   position: relative;
   z-index: 2;
   display: block;
-  margin: var(--spacing-unit) 0;
+  margin-bottom: var(--spacing-unit);
   color: var(--color-black);
   font-size: var(--title-font-size);
   font-weight: var(--title-font-weight);
@@ -165,7 +169,7 @@ p {
 main {
   display: block;
   width: 100%;
-  padding: var(--spacing-unit);
+  padding: calc(2 * var(--spacing-unit));
 }
 
 main.white-bg {
@@ -183,7 +187,7 @@ main.white-bg {
   flex-direction: column;
   width: 100%;
   max-width: 75rem;
-  padding: calc(2 * var(--spacing-unit)) 0;
+  padding: calc(1 * var(--spacing-unit)) 0;
   margin: 0 auto;
 }
 
@@ -232,9 +236,18 @@ main.white-bg {
   flex: 1 0 auto;
   display: block;
   width: calc(100% - (2 * var(--spacing-unit)));
-  min-height: 100px;
+  min-height: 20rem;
   margin: var(--spacing-unit);
-  background-color: var(--color-grey);
+  /* background-color: var(--color-grey); */
+}
+
+.d3-graph > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.d3-graph > svg rect {
+  fill: var(--color-black);
 }
 
 /*

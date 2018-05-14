@@ -1,12 +1,16 @@
-
-<%- include('../partials/header.ejs') %>
-  <svg id="harvest" width="1000" height="500"></svg>
+  <svg id="harvest"></svg>
 
   <script type="text/javascript">
-	  var svg = d3.select("#harvest"),
-	    margin = {top: 20, right: 20, bottom: 30, left: 40},
-	    width = +svg.attr("width") - margin.left - margin.right,
-	    height = +svg.attr("height") - margin.top - margin.bottom;
+    var svg = d3.select("#harvest");
+
+    var graph = document.getElementById('harvest').parentNode;
+    var graphWidth = graph.offsetWidth;
+    var graphHeight = graph.offsetHeight;
+
+    var margin = {top: 20, right: 20, bottom: 70, left: 40};
+
+    var width = graphWidth - margin.left - margin.right;
+    var height = graphHeight - margin.top - margin.bottom;
 
 		var parseTime = d3.timeParse("%Y-%m-%d");
 
@@ -29,12 +33,18 @@
 			g.append("g")
 				.attr("transform", "translate(0," + height + ")")
 				.call(d3.axisBottom(x))
-				.select(".domain");
+        .selectAll("text")
+          .style("text-anchor", "end")
+          .attr("dx", "-.8em")
+          .attr("dy", ".15em")
+          .attr("transform", function(d) {
+            return "rotate(-90)"
+          });
 
 				g.append("g")
 		      .call(d3.axisLeft(y))
 		    .append("text")
-		      .attr("fill", "#000")
+		      .attr("fill", "#141414")
 		      .attr("transform", "rotate(-90)")
 		      .attr("y", 9)
 		      .attr("dy", "1em")
@@ -52,5 +62,3 @@
 
 		});
   </script>
-
-<%- include('../partials/footer.ejs') %>
