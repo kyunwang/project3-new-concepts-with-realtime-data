@@ -8,6 +8,7 @@ const sockjs = require('sockjs');
 const sockConnect = require('./sockConnect');
 
 const app = express();
+const server = require('http').createServer(app);
 
 // Import the helper file
 const helpers = require('../public/scripts/helpers');
@@ -60,9 +61,9 @@ app.use('/api', apiRoutes);
 === Make a connection to the sockJS client
 ===========================*/
 
-// sockConnect(echo);
+echo.installHandlers(server, { prefix: '/sock-ar-graph' });
 
 // Listen to defined port
-app.listen(process.env.PORT, function() {
+server.listen(process.env.PORT, function() {
 	console.log('Listening to port: ', process.env.PORT);
 });

@@ -1,6 +1,3 @@
-const http = require('http');
-const server = http.createServer();
-
 const SockJS = require('sockjs-client-node');
 const Stomp = require('stompjs');
 
@@ -61,10 +58,6 @@ function sockConnect(echo) {
 			stomp.init();
 		}
 	});
-
-	echo.installHandlers(server, { prefix: '/echo' });
 }
-
-server.listen(9999, '0.0.0.0');
 
 module.exports = sockConnect;

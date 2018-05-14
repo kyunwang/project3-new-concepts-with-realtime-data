@@ -1,5 +1,5 @@
-var sock = new SockJS('http://localhost:9999/echo');
-// var sock = new SockJS('https://834e6f60.ngrok.io/echo');
+// var sock = new SockJS('http://localhost:9999/sock-ar-graph');
+var sock = new SockJS('https://arquaponics.herokuapp.com/sock-ar-graph');
 
 sock.onopen = function() {
 	console.log('Sock connection opened');

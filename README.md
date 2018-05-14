@@ -36,6 +36,9 @@ First you need to create a `vars.env` file with `PORT=3100` (Or any port you lik
 3. Run `npm start` to start the server
 4. You can now go to [`http://localhost:3100/`](http://localhost:3100/)
 
+*NOTE:*
+- When developing go to the file `public/scripts/clientSock.js` and change the sockjs class initialisation to the localhost one when developing and vice-versa for production.
+
 # Concept
 The concept of this product is to have an introductory to the story of De Ceuvel. By telling the story you can't see the effect of the  overall energy consumption or energy output. By making a nice data visualisation of every data output on a screen will not do the **awesome** story of De Ceuvel justice.
 
