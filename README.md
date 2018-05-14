@@ -1,7 +1,7 @@
 <h1 align="center">Arquaponics</h1>
 
 <div align="center">
-  <img src="assets/arquaponies-logo.png">
+  <img src="/public/assets/arquaponies-logo.png">
   <p> Arquaponies </p>
 </div>
 <div align="center">
@@ -46,29 +46,27 @@ There will be a companion website, where you can see all the data and the explan
 ## Story
 What De Ceuvel does is making self made bio energy from plants and that energy will be needed to make some produce. That produce is used for the café. They make use of an aquaponics system and a joint 'self sufficient' energy producing and sharing system.
 
-## User Stories/Stakeholders
-> As space&matter (a partner) I would want to know how De Ceuvel is doing on generating energy and how much it's sustainable energy is presented.
-
-> As gemeente Amsterdam (a partner) I would want to know why this place is good for the enviroment, and what they do better.
+## Stakeholders
+ - Space&Matter
+ - Gemeente Amsterdam
 
 ## User scenario
-> Rick CTO of Space&matter want to know more of the results that De Ceuvel have made.
+> Sophie Vranken is a junior architect at a proactive architecture agency that strives for innovative ideas, with the name Space&Matter. An agency that has been working closely with de Ceuvel. Sophie wants to know how De Ceuvel is doing and how they are gaining experience.
 
-> Marit is a investment agent for the Gemeente Amsterdam. She wants to know what kind of benefit De Ceuvel has for Amsterdam and what De Ceuvel have researched and implemented.
+> Channah Myer is working for the environment department at De Gemeente Amsterdam, which is a partner that is financially aiding De Ceuvel. Gemeente Amsterdam is mostly interested in results and how De Ceuvel is keeping it up and running. How they accumulate energy and how this is effecting De Ceuvel. Especially how they are self sufficient.
 
-## (ideal) User flow
-Rick
-> .. When Rick arrive at the gate and/or done after having the introductory Rick would be seeing a sign to show me how to get started to see "more" insights in De Ceuvel. As Rick progresses he would see recognisable points to use so he can see more.
+## User flow
+Sophie Vranken
+> .. When Sophie arrives at the gate and is done with the introductory, she would see a sign to show her how to get started viewing "more" insights in De Ceuvel. As Sophie progresses she would see recognisable points to use so she can see more.
 
-Marit
-> ..Marit noticed that there are signs with stickers everywhere. She notice that with the application she will find more accomplishments De Ceuvel have achieved. With the interaction of these AR she has more insights. afterwards she can visit the website to see everything.
+Channah Myer
+> ..Channah notices that there are signs with stickers everywhere. She notices that with the application she will find more accomplishments De Ceuvel have achieved. With the interaction of this AR she has more insights. Afterwards she can visit the website to see everything.
 
 ## Goal
-1. The Goal of this project is to add an awareness of how bad grey energy is and show that the greenhouse in De Ceuvel a great alternative is.
 
-2. Learn about De Ceuvel and it's sustainability with green energy.
+1. Learn about De Ceuvel and it's sustainability with green energy.
 
-3. De Ceuvel wants to let the partners know what they are doing and how they are doing it.
+2. De Ceuvel wants to let the partners know about aquaponics, the benefits it has on the environment and that this is a good alternative for the current agriculture. 
 
 # Features
 The features we use for this application.
@@ -80,10 +78,8 @@ The features we use for this application.
   - With the new way of showing the data on the facility of De Ceuvel. You want to view the data later on with a bit more explanation. So there is a website that shows the data of others and explains that data with the story.
 
 # The data
-<!-- data life cycle? data retention/database ? -->
 The data is being stored on a stomp server and we use a connection via a StompJS package to get that data. What we receive is:
 
-<!-- example data -->
 ```json
 {
   "consumption": "",
@@ -99,7 +95,6 @@ The data is being stored on a stomp server and we use a connection via a StompJS
 That data we send to the client so we can use it for the AR and the website.
 
 ### API
-<!-- Api: limitations, rate limit? not applied ?  -->
 The limitations of the API is that you have not much to deal with. You get consumption and production of energy. _But that's what it supposed to do_. We get data every 2-3 seconds. We show the data real-time so there won't be any delay.
 
 ### on the AR side
@@ -111,8 +106,8 @@ Unfortunately we have a lot of data that isn't real time, that data will be used
 # Tools
 The tools/packages used for this project:
 * [d3.js](https://github.com/d3) - _d3JS is being used to render graphs with data_
-* [a-frame](https://aframe.io/) - _a frame is being used for the augmentend reality_
-- [AR.js](https://github.com/jeromeetienne/AR.js) - _transforms the vr enviroment to AR enviroment_
+* [a-frame](https://aframe.io/) - _a frame is being used for the augmented reality_
+- [AR.js](https://github.com/jeromeetienne/AR.js) - _transforms the VR environment to AR environment
 * [SockJS](https://github.com/sockjs) - _SockJS is being used for the socket connection to the client_
 * [StompJS](https://www.npmjs.com/package/stompjs) - _StompJS is being used for the connection through the database to the server_
 * [ExpressJS](https://expressjs.com/) - _Express is being used for the server_
@@ -127,42 +122,42 @@ The tools/packages used for this project:
   - [x] SockJS
 
 
-- [ ] Static data
-  - [ ] Clean up
-  - [ ] Use that data for d3.js
-  - [ ] Write and explain what you can see in the data.
-  - [ ] find data on gray energy and compare (via d3).
+- [x] Static data
+  - [x] Clean up
+  - [x] Use that data for d3.js
+  - [x] Write and explain what you can see in the data.
+  - [x] find data on gray energy and compare (via d3).
 
 ### Augmented Reality
 - [x] Augmented reality set up
-- [ ] Complete one AR graph
+- [x] Complete one AR graph
   - [x] Get d3JS to work in AR
   - [x] Show a Line graph
   - [x] Add the retrieved data in AR
   - [x] Real time Updating the line graph (in AR)
-  - [ ] In(Solar) and out(consumption)
-  - [ ] Text in the AR experience  
-  - [ ] Labels for in out  
+  - [x] In(Solar) and out(consumption)
+  - [x] Text in the AR experience  
+  - [x] Labels for in out  
 
 ### D3 js
-- [ ] D3 graphs for the website
-  - [ ] Fish data graph
-  - [ ] Harvest graph
-  - [ ] NO4 graph
+- [x] D3 graphs for the website
+  - [ ] Fish data graph (nice to have)
+  - [x] Harvest graph
+  - [ ] NO4 graph (nice to have)
 
 ### Enhancements
-- [ ] Dynamic for multiple boats
-  - [ ] So it's easier to make multiple boats
+- [ ] Dynamic for multiple boats (nice to have)
+  - [ ] So it's easier to make multiple boats (nice to have)
 
 ### Website
-- [ ] Website
+- [x] Website
   - [x] Styling
   - [x] Landing page
   - [x] Zero state
-  - [ ] Content
-  - [ ] Load in the graphs
-  - [ ] Explain the graphs
-  - [ ] Explain the Aquaponics process
+  - [x] Content
+  - [x] Load in the graphs
+  - [x] Explain the graphs
+  - [x] Explain the Aquaponics process
 
 ### Research
 - [x] Research
@@ -170,7 +165,7 @@ The tools/packages used for this project:
   - [x] Location
   - [x] User Stories
   - [x] User Scenarios
-  - [x] Ideal User Flow
+  - [x] User Flow
   - [x] Goals
 
 # License
