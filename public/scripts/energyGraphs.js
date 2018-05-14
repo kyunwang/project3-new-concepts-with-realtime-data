@@ -17,6 +17,7 @@ var line = d3.line().x(function(d, i) {
 var g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 function renderLine(data) {
+
 	if (data.length === 0) return;
 
 	if (data.length === 1 && setAxis) {
