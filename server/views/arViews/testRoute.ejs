@@ -1,24 +1,11 @@
-
 <%- include('../partials/header.ejs') %>
 
-	<h1>Homepage</h1>
-	<p><%= message %></p>
+	<h1>Data</h1>
 
-  <script type="text/javascript">
-		var sock = new SockJS('http://localhost:9999/echo');
-		
-		sock.onopen = function() {
-			console.log('open');
-		};
-		
-		sock.onmessage = function(e) {
-			var data = JSON.parse(e.data);
-			console.log(data);
-		};
-		
-		sock.onclose = function() {
-			console.log('close');
-		};
-  </script>
+	<svg id="graph-piepschuimhuis" width="960" height="500"></svg>
+
+	<script src="/scripts/clientHelpers.js"></script>
+	<script src="/scripts/clientSock.js"></script>
+	<script src="/scripts/energyGraphs.js"></script>
 
 <%- include('../partials/footer.ejs') %>

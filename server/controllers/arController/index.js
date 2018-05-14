@@ -17,8 +17,6 @@ exports.tourView = (req, res) => {
 
 // Can be deleted P.S. delete the template too
 exports.testRoute = (req, res) => {
-	// req.stomp.init();
-
 	res.render('arViews/testRoute', { message: 'd3 test page', enableD3: true, amqp: amqp });
 };
 

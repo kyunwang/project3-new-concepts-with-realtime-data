@@ -26,7 +26,7 @@ function sockConnect(echo) {
 		function connectStomp() {
 			console.log('Start Stomp');
 
-			const endpoint = '/exchange/power/11'; // Piepschuimhuis 2A
+			const endpoint = '/exchange/power/11'; // 11 = Piepschuimhuis 2A
 			// const endpoint = '/exchange/power/#'; // Gets all
 
 			const stomp = {

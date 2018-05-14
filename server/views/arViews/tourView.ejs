@@ -3,7 +3,7 @@
 	<a-scene
 		embedded
 		arjs='debugUIEnabled: true;'
-		>
+	>
 		<!-- inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js" -->
 
 		<!-- Container for consumption line/curve point -->
@@ -64,14 +64,18 @@
 					></a-entity>
 
 					<a-text
-						value="Use:"
+						value="Consumption:"
 						position=".1 0 0"
 					></a-text>
-					<a-text
-						id="a-consumption-value"
-						value="0"
-						position=".65 0 0"
-					></a-text>
+
+					<a-entity position=".1 -.3 0">
+						<a-text value="W"></a-text>
+						<a-text
+							id="a-consumption-value"
+							value="0"
+							position=".25 0 0"
+						></a-text>
+					</a-entity>
 				</a-entity>
 
 				<!-- Solar label -->
@@ -93,11 +97,15 @@
 						value="Solar:"
 						position=".1 0 0"
 					></a-text>
-					<a-text
-						id="a-solar-value"
-						value="0"
-						position=".75 0 0"
-					></a-text>
+
+					<a-entity position=".1 -.3 0">
+						<a-text value="W"></a-text>
+						<a-text
+							id="a-solar-value"
+							value="0"
+							position=".25 0 0"
+						></a-text>
+					</a-entity>
 				</a-entity>
 			</a-entity>
 		</a-entity>
@@ -118,12 +126,12 @@
 				position="-1.6 .1 .6"
 				scale="1"
 			>
-				<a-text value="Header"></a-text>
+				<a-text value="Piepschuimboot"></a-text>
 				<a-entity
-					position="0 -.25 0"
+					position="0 -.35 0"
 					scale=".7 .7 .7"
 				>
-					<a-text value="Content Content Content Content Content"></a-text>
+					<a-text value="Hier vindt u de data over het energie van het piepschuimhuis. Hier bevindt zich Studio Valkenier, architect van Café de Ceuvel."></a-text>
 				</a-entity>
 			</a-entity>
 		</a-entity>
@@ -141,8 +149,7 @@
 		<a-marker-camera preset='hiro'></a-marker-camera>
 	</a-scene>
 
-
-
+	<script src="/scripts/clientHelpers.js"></script>
 	<script src="/scripts/clientSock.js"></script>
 	<script src="/scripts/arGraphs.js"></script>
 
