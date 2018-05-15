@@ -12,4 +12,5 @@ router.get('/zerostate', wController.zeroState);
 
 router.get('/home', arController.getApiEnergy, wController.infoPage);
 
+
 module.exports = router;

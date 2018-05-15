@@ -10,6 +10,7 @@ const sockConnect = require('../../sockConnect');
 require('dotenv').config({ path: '../../../vars.env' });
 
 exports.tourView = (req, res) => {
+
 	// console.log(req.stomp);
 
 	res.render('arViews/tourView', { enableAr: true, enableD3: true });
@@ -21,6 +22,7 @@ exports.testRoute = (req, res) => {
 };
 
 exports.apiTest = (req, res) => {
+
 	res.render('arViews/api', { message: 'Api test page', data: stomp.data });
 };
 
@@ -66,4 +68,5 @@ exports.getApiAqua = (req, res, next) => {
 			});
 		});
 	});
+
 };

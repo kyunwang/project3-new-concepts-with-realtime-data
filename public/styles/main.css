@@ -83,6 +83,12 @@ h1::after {
   height: 1rem;
   content: '';
 }
+@media all and (min-width: 35rem) {
+  h1::before,
+  h1::after {
+    height: 1.5rem;
+  }
+}
 h1::before {
   left: -50vw;
   bottom: -.25rem;
@@ -94,6 +100,11 @@ h1::after, h1::after {
   bottom: -1.25rem;
   width: calc(15vw + 80%);
   background-color: var(--color-primary);
+}
+@media all and (min-width: 35rem) {
+  h1::after {
+    bottom: -1.75rem;
+  }
 }
 
 h2 {
@@ -152,6 +163,7 @@ p {
 .action-btn:active::after {
   bottom: 0;
 }
+
 
 @media all and (prefers-reduced-motion: reduce) {
   .action-btn,
@@ -298,6 +310,7 @@ main.white-bg {
   text-align: center;
 }
 
+
 .zerostate h2 {
   text-align: center;
   margin-bottom: 2em;
@@ -323,6 +336,7 @@ main.white-bg {
   width: calc(50vw + 60%);
   background-color: var(--color-white);
 }
+
 
 .zerostate h2::after {
   left: -15vw;
@@ -450,3 +464,4 @@ main.white-bg {
   fill: none;
 //   stroke: steelblue;
   stroke-width: 2px;
+

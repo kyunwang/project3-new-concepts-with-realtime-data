@@ -15,7 +15,9 @@ const helpers = require('../public/scripts/helpers');
 
 // Import routes
 const routes = require('./routes');
+
 const apiRoutes = require('./routes/data-api');
+
 const arRoutes = require('./routes/arRoutes');
 
 const echo = sockjs.createServer({
