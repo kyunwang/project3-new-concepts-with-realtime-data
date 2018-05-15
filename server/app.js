@@ -58,6 +58,11 @@ app.use('/', routes);
 app.use('/ar-tour', arRoutes);
 // app.use('/api', apiRoutes);
 
+app.get('*', function(req, res) {
+	// A quick solution for now. need to attach a  message to it too e.g. sorry we can't find what you are looking for
+	res.redirect('/');
+});
+
 /*==========================
 === Make a connection to the sockJS client
 ===========================*/
