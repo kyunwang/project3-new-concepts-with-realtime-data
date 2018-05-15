@@ -3,8 +3,7 @@ exports.homePage = (req, res) => {
 };
 
 exports.infoPage = (req, res) => {
-
-	res.render('website/infoPage', {enableD3: true});
+	res.render('website/infoPage', { enableD3: true });
 };
 
 exports.zeroState = (req, res) => {
