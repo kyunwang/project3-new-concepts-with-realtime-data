@@ -1,0 +1,63 @@
+  <svg id="harvest"></svg>
+
+  <script type="text/javascript">
+    var barsvg = d3.select("#harvest");
+
+    var bargraph = document.getElementById('harvest').parentNode;
+    var bargraphWidth = bargraph.offsetWidth;
+    var bargraphHeight = bargraph.offsetHeight;
+
+    var barmargin = {top: 20, right: 20, bottom: 70, left: 40};
+
+    var barwidth = bargraphWidth - barmargin.left - barmargin.right;
+    var barheight = bargraphHeight - barmargin.top - barmargin.bottom;
+
+		var barparseTime = d3.timeParse("%Y-%m-%d");
+
+		var barx = d3.scaleTime().rangeRound([0,barwidth]),
+		    bary = d3.scaleLinear().rangeRound([barheight, 0]);
+
+		var barg = barsvg.append("g")
+		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+		d3.csv("/productionAquaponics.csv").then(function (data) {
+
+		data.forEach(function (d){
+			d.Date = barparseTime(d.Date);
+	})
+
+			barx.domain(d3.extent(data, function(d) { return d.Date; }));
+			bary.domain(d3.extent(data, function(d) { return parseInt(d.herbs); }));
+
+			barg.append("g")
+				.attr("transform", "translate(0," + barheight + ")")
+				.call(d3.axisBottom(barx))
+        .selectAll("text")
+          .style("text-anchor", "end")
+          .attr("dx", "-.8em")
+          .attr("dy", ".15em")
+          .attr("transform", function(d) {
+            return "rotate(-90)"
+          });
+
+				barg.append("g")
+		      .call(d3.axisLeft(bary))
+		    .append("text")
+		      .attr("fill", "#141414")
+		      .attr("transform", "rotate(-90)")
+		      .attr("y", 9)
+		      .attr("dy", "1em")
+		      .attr("text-anchor", "end")
+		      .text("harvested in KG");
+
+			barg.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return barx(d.Date); })
+      .attr("y", function(d) { return bary(d.herbs); })
+      .attr("width", 10)
+      .attr("height", function(d) {  return barheight - bary(d.herbs); });
+
+		});
+  </script>

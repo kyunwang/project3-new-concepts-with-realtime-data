@@ -1,0 +1,98 @@
+<%- include('../partials/header.ejs') %>
+
+	<header class="site-header">
+		<article class="intro-info">
+			<h1 class="intro-title">De Ceuvel</h1>
+			<h2 class="intro-text">
+				De Ceuvel is een duurzame broedplaats voor creatieve en sociale ondernemers op een voormalige scheepswerf aan het Van Hasseltkanaal in Amsterdam-Noord.
+				In 2012 diende een groep architecten het winnende plan in voor een prijsvraag van de gemeente Amsterdam.
+				Ze kregen het terrein voor 10 jaar te leen.
+			</h2>
+		</article>
+	</header>
+
+	<nav class="badges">
+		<a class="badge" role="button" href="#cafe-de-ceuvel">
+			<img src="/assets/images/badges/cafe-de-ceuvel-badge.svg" alt="">
+			<span>Cafe de Ceuvel</span>
+		</a>
+		<a class="badge" role="button" href="#greenhouse">
+			<img src="/assets/images/badges/greenhouse-badge.svg" alt="">
+			<span>Greenhouse</span>
+		</a>
+		<a class="badge" role="button" href="#mlab">
+			<img src="/assets/images/badges/mlab-badge.svg" alt="">
+			<span>MLab</span>
+		</a>
+	</nav>
+
+	<main class="white-bg">
+		<section id="cafe-de-ceuvel" class="site-section">
+			<h1>De Ceuvel</h1>
+			<div class="content">
+				<article class="page-article">
+					<p>
+						Nu is De Ceuvel een bruisende gemeenschap van ondernemers en kunstenaars met een groen hart, die eigenhandig hebben meegebouwd aan hun werkplekken in Amsterdam’s eerste circulaire kantoorpark.
+						Het terrein bevat creatieve werkplekken, een cultureel centrum rondom duurzaamheid, een café-restaurant, ruimtes voor verhuur en drijvend hotel.
+					</p>
+					<p>
+						Op de voormalige werf realiseren we één van de meest unieke stedelijke experimenten in Europa.
+						Oude woonboten zijn met fundering en al op het zwaar vervuilde terrein geplaatst, verbouwd tot duurzame werkplekken en verbonden door een meanderende steiger.
+						Rondom de boten krijgen bodemreinigende planten vrij spel om de vervuilde grond te zuiveren.
+						De Ceuvel is niet alleen een ‘verboden tuin’ die na 10 jaar schoner wordt achtergelaten, maar ook een speeltuin voor duurzame technieken: door duurzame technologie te integreren voorzien we zoveel mogelijk in onze eigen elektra en verwerken we ons eigen afval op innovatieve, nieuwe manieren.
+					</p>
+				</article>
+				<div class="d3-graph">
+					<%- include('../arViews/testRoute.ejs') %>
+				</div>
+			</div>
+		</section>
+
+		<section id="greenhouse" class="site-section">
+			<h1>Greenhouse</h1>
+			<div class="content">
+				<article class="page-article">
+					<p>
+						Ieder kantoor op de Ceuvel produceert en consumeert zijn eigen opgewekte stroom door middel van zonnepanelen boven hun dak.
+						Een van deze woonbootjes is de Greenhouse: hierin worden plantjes, kruiden en vissen gekweekt binnen een eigen ecosysteem voor consumptie in café de Ceuvel.
+					</p>
+					<p>
+						Het ecosysteem zit als volgt in elkaar: de cyclus begint bij de eerste waterbak waarin de vissen in zitten.
+						De vissen eten, zwemmen rond en scheiden ammonia uit.
+						Het water waar de ammonia in zit stroomt daarna naar de volgende bak, waar vervolgens de bacterie Nitrosomonas ammonia (NH3) omzet naar nitriet (NO2) en de bacteriën genaamd Nitrospira nitriet (NO2) omzetten naar nitraat (NO3).
+						Het nitraat (NO3) dient als deel van de voedingsstoffen voor de planten.
+						Ondertussen wordt het water van de waterbakken naar de plantenkas gepompt.
+						De planten in de kas groeien doordat zij het nitraat uit het water opnemen en op deze wijze ook het water zuiveren.
+						Het gezuiverde water gaat gelijk door naar de vissen in de waterbak en vervolgens wordt de cyclus steeds weer herhaald.
+					</p>
+					<p>
+						Wanneer de plantjes (en de vissen) groot genoeg zijn, worden ze geoogst en naar het café gebracht voor consumptie.
+					</p>
+				</article>
+				<div class="d3-graph">
+					<%- include('d3-barchart.ejs') %>
+				</div>
+			</div>
+		</section>
+
+		<section id="mlab" class="site-section">
+			<h1>Cafe de Ceuvel</h1>
+			<div class="content">
+				<article class="page-article">
+					<p>
+						Café de Ceuvel wil graag een verschil maken in de wereld, en dat begint op je bord.
+						Het wereldvoedselsysteem is de grootste oorzaak van klimaatverandering en een scala aan andere sociale problemen.
+						Het café is daarom op zoek naar wat écht goed eten en drinken is en dat gaat verder dan een labeltje waar ‘biologisch’ op staat.
+					</p>
+					<p>
+						Zij werken samen met een hele reeks aan initiatieven die ervoor zorgen dat ieder bordje, biertje en drankje dat zij op tafel zetten ervoor zorgt dat de wereld een beetje mooier wordt, waaronder het Greenhouse en Aquaponics initiatief.
+						Het eten dat bij het café geserveerd wordt, komt vooral uit het duurzame ecosysteem naast de deur.
+					</p>
+				</article>
+				<!-- <div class="d3-graph">
+				</div> -->
+			</div>
+		</section>
+	</main>
+
+<%- include('../partials/footer.ejs') %>
