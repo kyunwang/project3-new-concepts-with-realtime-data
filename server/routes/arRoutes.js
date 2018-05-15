@@ -3,7 +3,7 @@ const arController = require('../controllers/arController');
 
 const router = express.Router();
 
-router.get('/', arController.tourView);
-router.get('/d3', arController.d3Tests);
+router.get('/', arController.getApiEnergy, arController.tourView);
+// router.get('/test', arController.getApiEnergy, arController.testRoute);
 
 module.exports = router;
