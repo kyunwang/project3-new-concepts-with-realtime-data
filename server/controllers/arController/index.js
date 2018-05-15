@@ -22,7 +22,6 @@ exports.testRoute = (req, res) => {
 };
 
 exports.apiTest = (req, res) => {
-
 	res.render('arViews/api', { message: 'Api test page', data: stomp.data });
 };
 
@@ -68,5 +67,4 @@ exports.getApiAqua = (req, res, next) => {
 			});
 		});
 	});
-
 };
