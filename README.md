@@ -14,6 +14,8 @@
 
 ------------------------------------
 
+[Our live application](https://arquaponics.herokuapp.com/)
+
 A collaboration with:
 - [VincentKempers](https://github.com/VincentKempers)
 - [nourbayard](https://github.com/nourbayard)
@@ -69,7 +71,7 @@ Channah Myer
 
 1. Learn about De Ceuvel and it's sustainability with green energy.
 
-2. De Ceuvel wants to let the partners know about aquaponics, the benefits it has on the environment and that this is a good alternative for the current agriculture. 
+2. De Ceuvel wants to let the partners know about aquaponics, the benefits it has on the environment and that this is a good alternative for the current agriculture.
 
 # Features
 The features we use for this application.
