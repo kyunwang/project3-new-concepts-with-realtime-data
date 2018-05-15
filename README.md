@@ -14,13 +14,20 @@
 
 ------------------------------------
 
-[Our live application](https://arquaponics.herokuapp.com/)
-
 A collaboration with:
 - [VincentKempers](https://github.com/VincentKempers)
 - [nourbayard](https://github.com/nourbayard)
 - [vriesm060](https://github.com/vriesm060)
-- [kyunwang](https://github.com/kyunwang)(Me)
+- [kyunwang](https://github.com/kyunwang)
+
+
+**[Our live application](https://arquaponics.herokuapp.com/)**
+Scan this image for the AR:
+<div align="center">
+	<img src="/public/assets/hiro-marker.png">
+</div>
+
+
 
 # Table of Content
 - [Getting started](#getting-started)
